@@ -1,0 +1,24 @@
+name: Linters
+
+on: pull_request
+
+jobs:
+  flake8:
+    name: Flake8
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 5.x
+
+      - name: Install dependencies
+        run: |
+          pip install flake8
+          # You can also install other required packages here
+      
+      - name: Flake8 Report
+        run: |
+          flake8  # Run Flake8 to lint your Python code
